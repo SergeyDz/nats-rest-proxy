@@ -1,28 +1,29 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+
+	config "nats-rest-proxy/config"
+	handler "nats-rest-proxy/handler"
+	middleware "nats-rest-proxy/middleware"
+	repository "nats-rest-proxy/repository"
 )
 
 func main() {
 	// Echo instance
 	e := echo.New()
+	config := config.NewViperConfig()
 
-	// Middleware
-	//e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
+	middL := middleware.InitMiddleware()
+	e.Use(middL.CORS)
 
-	// Routes
-	e.GET("/", hello)
+	// initialize handlers
+	natsProducerRepository := repository.NewNatsClient(config.GetString("nats.connection"), config.GetString("nats.cluster"), config.GetString("nats.client"), config.GetString("nats.consumerGroup"))
+	handler.NewRestProxyHandler(e, &natsProducerRepository)
 
-	// Start server
-	e.Logger.Fatal(e.Start(":8080"))
-}
+	console := handler.NewConsoleLogHandler()
+	natsProducerRepository.Subscribe("jenkins", console.WriteConsoleLog)
 
-// Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Web Host started. Listening...")
+	// Start http server
+	e.Logger.Fatal(e.Start(config.GetString("server.port")))
 }

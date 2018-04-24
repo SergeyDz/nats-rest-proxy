@@ -1,0 +1,11 @@
+{
+    "server": {
+      "port": ":8080"
+    },
+    "nats": {
+        "connection": "http://10.18.1.34:10531",
+        "cluster": "test-cluster",
+        "client": "test-client",
+        "consumerGroup": "test-consumer-group"
+    }
+  }

@@ -2,27 +2,26 @@
 
 
 [[projects]]
-  name = "github.com/dgrijalva/jwt-go"
-  packages = ["."]
-  revision = "dbeaa9332f19a944acb5736b4456cfcc02140e29"
-  version = "v3.1.0"
+  name = "github.com/gogo/protobuf"
+  packages = [
+    "gogoproto",
+    "proto",
+    "protoc-gen-gogo/descriptor"
+  ]
+  revision = "1adfc126b41513cc696b209667c8656ea7aac67c"
+  version = "v1.0.0"
 
 [[projects]]
   name = "github.com/labstack/echo"
-  packages = [
-    ".",
-    "middleware"
-  ]
+  packages = ["."]
   revision = "b338075a0fc6e1a0683dbf03d09b4957a289e26f"
   version = "3.2.6"
 
 [[projects]]
   name = "github.com/labstack/gommon"
   packages = [
-    "bytes",
     "color",
-    "log",
-    "random"
+    "log"
   ]
   revision = "57409ada9da0f2afad6664c49502f8c50fbd8476"
   version = "0.2.3"
@@ -38,6 +37,31 @@
   packages = ["."]
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
   version = "v0.0.3"
+
+[[projects]]
+  name = "github.com/nats-io/go-nats"
+  packages = [
+    ".",
+    "encoders/builtin",
+    "util"
+  ]
+  revision = "d66cb54e6b7bdd93f0b28afc8450d84c780dfb68"
+  version = "v1.4.0"
+
+[[projects]]
+  name = "github.com/nats-io/go-nats-streaming"
+  packages = [
+    ".",
+    "pb"
+  ]
+  revision = "6e620057a207bd61e992c1c5b6a2de7b6a4cb010"
+  version = "v0.3.4"
+
+[[projects]]
+  name = "github.com/nats-io/nuid"
+  packages = ["."]
+  revision = "289cccf02c178dc782430d534e3c1f5b72af807f"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -69,6 +93,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e005a22fb1ddfe8dd1a841fa1258537aa320f8768f3c0a9ca91cfc2e609d6be2"
+  inputs-digest = "d212b0303c9ab5b450401d0dfdcf57d698cf21c8a5575188ad88318ff08d7af0"
   solver-name = "gps-cdcl"
   solver-version = 1

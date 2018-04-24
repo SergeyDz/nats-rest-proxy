@@ -1,4 +1,4 @@
-package build
+package model
 
 // Build for Jenkins Job Report
 type Build struct {
