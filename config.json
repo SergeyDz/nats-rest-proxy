@@ -7,5 +7,9 @@
         "cluster": "test-cluster",
         "client": "test-client",
         "consumerGroup": "test-consumer-group"
+    },
+    "elastic": {
+      "url": "http://paas-dev-elastic-01.paas.sbtech.com:9200",
+      "index": "nats-jenkins"
     }
   }
